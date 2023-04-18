@@ -1,0 +1,35 @@
+<!-- this page gives a form that users can use to register -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+	<h2 id="pageTitle">Register for new account</h2>
+
+	<form method="post" th:action="@{/register}" th:object="${user}"
+		id="form">
+		<br> <label for="username" class="label">Username</label> <input
+			type="text" th:field="*{userName}" class="input"
+			placeholder="Username" required autofocus> <br>
+		<br> <label for="password" class="label">Password</label> <input
+			type="password" th:field="*{encryptedPassword}" class="input"
+			placeholder="Password" required> <br> <input
+			type="submit" value="register" id="submit">
+
+	</form>
+</body>
+</html>

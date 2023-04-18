@@ -1,0 +1,23 @@
+<!-- this logout button terminates the user session -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/add">Add Tickets</a> <a href="/view">View
+			Tickets</a> <a href="/stats">View Report</a>
+	</div>
+	<form action="/logout">
+		<input type="submit" value="logout">
+	</form>
+</body>
+</html>

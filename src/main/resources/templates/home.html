@@ -1,0 +1,39 @@
+<!-- this is the home page of my application, it is accessable to all users-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+<meta charset="UTF-8">
+<title>Halloween haunt</title>
+</head>
+<body>
+
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+
+
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+
+	</div>
+
+	<h1 id="pageTitle">Get Tickets Now:</h1>
+
+	<div class="tickets">
+		<a href="/add"><img th:alt="ticket" th:src="@{/images/t1.png}"
+			style="height: 20%; width: 100%;" class="ticket"></a> 
+			<a href="/add"><img th:alt="ticket" th:src="@{/images/t2.png}"
+			style="height: 20%; width: 100%;" class="ticket"></a> 
+			<a href="/add"><img th:alt="ticket" th:src="@{/images/t3.png}"
+			style="height: 20%; width: 100%;" class="ticket"></a>
+
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!-- this is a view page that displays different things baseed on user roles
+guests can only view their tickets along with their taxes and total ammount
+vender can see all sold tickets along with options to edit and delete tickets -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Sold tickets</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+	<h1 id="pageTitle">View Sold tickets:</h1>
+
+	<table border="3" id="table">
+		<tr>
+			<th>Ticket No.</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Accompanying Pets</th>
+			<th>Status</th>
+			<th>Ticket Price</th>
+			<th th:if="${role} != 'ROLE_GUEST'">Edit</th>
+			<th th:if="${role} != 'ROLE_GUEST'">Delete</th>
+		</tr>
+		<tr th:each="ticket : ${tickets}">
+			<td th:text="${ticket.id}"></td>
+			<td th:text="${ticket.name}"></td>
+			<td th:text="${ticket.age}"></td>
+			<td th:text="${ticket.gender}"></td>
+			<td th:text="${ticket.pet}"></td>
+			<td th:text="${ticket.status}"></td>
+			<td th:text= "${#numbers.formatDecimal(ticket.price, 0, 2)}"></td>
+			<td th:if="${role} != 'ROLE_GUEST'"><a th:href="@{/edit/{id}(id= ${ticket.id})}">Edit</a></td>
+			<td th:if="${role} != 'ROLE_GUEST'"><a th:href="@{/delete/{id}(id= ${ticket.id})}">Delete</a></td>
+		</tr>
+		<tr th:if="${role} == 'ROLE_GUEST'" class="tr" th:style="'background-color: #DA5D29;'">
+			<td th:text= "'Subtotal:'" >
+			<td>
+			<td>
+			<td>
+			<td>
+			<td>
+			<td th:text= "${#numbers.formatDecimal(sum, 0, 2)}" >
+		</tr>
+		<tr th:if="${role} == 'ROLE_GUEST'" th:style="'background-color: #DA5D29;'">
+			<td th:text= "'Taxes (13%):'" >
+			<td>
+			<td>
+			<td>
+			<td>
+			<td>
+			<td th:text= "${#numbers.formatDecimal(tax, 0, 2)}" >
+		</tr>
+		<tr th:if="${role} == 'ROLE_GUEST'" th:style="'background-color: #DA5D29;'">
+			<td th:text= "'GRANT TOTAL:'" >
+			<td>
+			<td>
+			<td>
+			<td>
+			<td>
+			<td th:text= "${#numbers.formatDecimal(total, 0, 2)}">
+		</tr>
+	</table>
+</body>
+</html>

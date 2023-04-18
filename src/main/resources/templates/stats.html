@@ -1,0 +1,49 @@
+<!-- this page is only accessable to the vender so see the final report and statictics -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event Statistics</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+
+	<h1 id="pageTitle">Event Statistics:</h1>
+	<table id="stats">
+		<tr>
+			<th>No. of tickets sold</th>
+			<td th:text="${count}"></td>
+		</tr>
+		<tr>
+			<th>Total revenue:</th>
+			<td th:text="${#numbers.formatDecimal(sum, 0, 2)}"></td>
+		</tr>
+
+		<tr>
+			<th>People at the age 18 and under:</th>
+			<td th:text="${under18}"></td>
+		</tr>
+
+		<tr>
+			<th>People over the age 18:</th>
+			<td th:text="${over18}"></td>
+		</tr>
+
+		<tr>
+			<th>People accompanying pets:</th>
+			<td th:text="${withPets}"></td>
+		</tr>
+
+	</table>
+</body>
+</html>

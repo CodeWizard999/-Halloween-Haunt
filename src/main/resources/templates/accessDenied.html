@@ -1,0 +1,14 @@
+<!-- this page gives an error message when unauthorized user tries to access it-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<img th:alt="denied" th:src="@{/images/cat.png}" style=" height: 100% ; width:100% ; "> 
+</body>
+</html>

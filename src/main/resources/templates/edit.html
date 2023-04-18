@@ -1,0 +1,50 @@
+<!-- this page shoes a form with editable fields so the vender can edit details, 
+	guests cannot edit tickets once bought-->
+	
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit Ticket</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+
+
+	<h1 id="pageTitle">Edit:</h1>
+	<form th:action="@{/proccessEdit}" th:method="get"
+		th:object="${ticket}" id="form">
+
+
+		<input type="hidden" th:field="*{id}"> <label class="label">Your
+			Name:</label> <input type="text" th:field="*{name}" class="input"><br>
+
+		<label class="label">Your age:</label> <input type="number"
+			th:field="*{age}" class="input" min="1" max="100"><br> <label
+			class="label">Your Gender:</label> <select th:field="*{gender}"
+			class="input">
+			<option th:each="g: *{genders}" th:value="${g}" th:text="${g}" />
+		</select><br> <label class="label">Are you bringing pets?</label> <select
+			th:field="*{pet}" class="input">
+			<option th:each="p: *{pets}" th:value="${p}" th:text="${p}" />
+		</select><br> <label class="label">Pick status:</label> <select
+			th:field="*{status}" class="input">
+			<option th:each="s: *{statuses}" th:value="${s}" th:text="${s}" />
+		</select><br> <label class="label">Pick ticket:</label> <select
+			th:field="*{price}" class="input">
+			<option th:each="p: *{prices}" th:value="${p}" th:text="${p}" />
+		</select><br> <input type="submit" value="EDIT" id="submit">
+
+	</form>
+
+</body>
+</html>

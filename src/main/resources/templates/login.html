@@ -1,0 +1,49 @@
+<!-- registered users can use this page to login -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+
+
+	<h2 id="pageTitle">Please sign in</h2>
+
+	<form method="post" th:action="@{/login}" id="form">
+		<h5 style="color:  #DA5D29;">Note: username and password is case sensitive</h5>
+		<div th:if="${param.error}" style="color: red;">Invaild username
+			or password</div>
+		<div th:if="${param.logout}" style="color: green;">You have
+			logged out</div>
+
+		<p>
+			<label for="username" class="label">Username</label> <input
+				type="text" id="username" name="username" class="input"
+				placeholder="Username" required autofocus>
+		</p>
+		<p>
+			<label for="password" class="label">Password</label> <input
+				type="password" id="password" name="password" class="input"
+				placeholder="Password" required>
+		</p>
+
+
+		<button type="submit" id="submit">Sign in</button>
+		<br>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- this page displays a form that user can fill out to buy a ticket -->
+<!-- where the the role guest can only buy a ticket with their name 
+	and the role vender can allocate more tickets to any of the guests-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Ticket</title>
+<Link rel="stylesheet" th:href="@{/css/myStyle.css}">
+</head>
+<body>
+	<header id="header">
+		<img th:alt="header" th:src="@{/images/header.png}"
+			style="height: 30%; width: 100%;">
+	</header>
+
+	<div class="topnav">
+		<a href="/">Home</a> <a href="/login">login</a> <a href="/register">Register</a>
+		<a href="/add">Add Tickets</a> <a href="/view">View Tickets</a> <a
+			href="/stats">View Report</a> <a href="/logout">logout</a>
+	</div>
+	<h1 id="pageTitle">Get your tickets now!</h1>
+
+	<form th:action="@{/proccessAdd}" th:method="get" th:object="${ticket}" id="form">
+
+		<label class="label">Name:</label> 
+
+		<div th:if="${role} == 'ROLE_GUEST'">
+			<select th:field="*{name}" class="input"> 	
+				<option  th:text="${guestName}" th:value="${guestName}" ></option>
+		</div>
+
+			<div th:if="${role} == 'ROLE_VENDER'" >
+		<select th:field="*{name}" class="input"> 	
+			<option th:each="n : ${users}" th:text="${n.userName}"
+				th:value="${n.userName}" />
+			</div>
+
+		</select><br> <label class="label">Your age:</label> <input type="number"
+			th:field="*{age}" class="input" min="1" max="100"><br> <label
+			class="label">Your Gender:</label> <select th:field="*{gender}"
+			class="input">
+			<option th:each="g: *{genders}" th:value="${g}" th:text="${g}" />
+		</select><br> <label class="label">Are you bringing pets?</label> <select
+			th:field="*{pet}" class="input">
+			<option th:each="p: *{pets}" th:value="${p}" th:text="${p}" />
+		</select><br> <label class="label">Pick status:</label> <select
+			th:field="*{status}" class="input">
+			<option th:each="s: *{statuses}" th:value="${s}" th:text="${s}" />
+		</select><br> <label class="label">Pick ticket:</label> <select
+			th:field="*{price}" class="input">
+			<option th:each="p: *{prices}" th:value="${#numbers.formatDecimal(p, 0, 2)}" th:text= "${#numbers.formatDecimal(p, 0, 2)}" />
+		</select><br> <input type="submit" value="BUY" id="submit">
+
+	</form>
+
+</body>
+</html>
