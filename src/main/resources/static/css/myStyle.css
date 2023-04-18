@@ -31,6 +31,25 @@ body {
   }
   
 
+  .intro {
+	background-color: black;
+	margin-bottom: 30px;
+	font-size: 18px;
+	color: #fff;
+	text-align: left;
+	line-height: 1.5;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+  }
+  
+  .intro p {
+	margin-bottom: 20px;
+	border: 10px dashed orangered;
+	padding: 10px;
+  }
+  
+  
 
 .tickets {
 	height: 80%;

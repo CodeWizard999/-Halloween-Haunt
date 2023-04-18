@@ -24,6 +24,7 @@
 
 	<form method="post" th:action="@{/login}" id="form">
 		<h5 style="color:  #DA5D29;">Note: username and password is case sensitive</h5>
+		<h5 style="color:  #a0421a;">for admin login: useranme -> vender, password -> 123</h5>
 		<div th:if="${param.error}" style="color: red;">Invaild username
 			or password</div>
 		<div th:if="${param.logout}" style="color: green;">You have
